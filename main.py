@@ -19,9 +19,7 @@ while lAnswer or score.score_total < 50:
     selected_state = data[data["state"].str.lower() == answer_state.lower()]
 
     if answer_state == 'Exit':
-        for state in data.state:
-            if state not in guess_list:
-                missed_state.append(state)
+        missed_state = [state for state in data.state if state not in guess_list]
         break
 
     if selected_state.empty:
